@@ -18,14 +18,19 @@ def build_graph(N, M):
         node_edges[x].append(y)
         node_edges[y].append(x)
         M -= 1
+    print ("Edges: ", node_edges)
     return node_edges
 
+class myQueue(Queue): 
+    def __str__(self): 
+        return self.queue.__str__()
 
 def compute_distances(S, node_edges):
     distances = {S: 0}
-    queue = Queue()
+    queue = myQueue()
     queue.put(S)
     while (not queue.empty()):
+        print ("Queue: ", queue)
         element = queue.get()
         distance = distances[element] + 6
         for neighbor in node_edges[element]:
@@ -33,6 +38,7 @@ def compute_distances(S, node_edges):
                 continue
             distances[neighbor] = distance
             queue.put(neighbor)
+    print ("Distances: ", distances)
     return distances
 
 
