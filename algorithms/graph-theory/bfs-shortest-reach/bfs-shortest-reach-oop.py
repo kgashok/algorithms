@@ -3,6 +3,8 @@
 import sys
 from queue import Queue
 
+def Graph (userDict):
+    pass 
 
 def read_ints():
     return [int(x) for x in sys.stdin.readline().split(" ")]
