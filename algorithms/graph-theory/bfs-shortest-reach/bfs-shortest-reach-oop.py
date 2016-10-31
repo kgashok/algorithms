@@ -3,7 +3,8 @@
 import sys
 from queue import Queue
 
-def Graph (userDict):
+# https://docs.python.org/2/library/userdict.html
+def Graph (UserDict):
     pass 
 
 def read_ints():
