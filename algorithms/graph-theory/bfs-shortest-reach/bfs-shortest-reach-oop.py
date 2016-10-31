@@ -2,6 +2,7 @@
 
 import sys
 from queue import Queue
+from collections import UserDict 
 
 # https://docs.python.org/2/library/userdict.html
 def Graph (UserDict):
