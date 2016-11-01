@@ -2,7 +2,10 @@
 
 import sys
 from queue import Queue
-from collections import UserDict 
+from collections import namedtuple 
+
+# Struct for edges.
+Edge = namedtuple('Edge', ['src', 'dest'])
 
 # https://docs.python.org/2/library/userdict.html
 class Graph(object):
