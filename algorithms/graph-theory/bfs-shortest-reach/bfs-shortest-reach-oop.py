@@ -2,7 +2,10 @@
 
 import sys
 from queue import Queue
-from collections import UserDict 
+from collections import namedtuple 
+
+# Struct for edges.
+Edge = namedtuple('Edge', ['src', 'dest'])
 
 # https://docs.python.org/2/library/userdict.html
 class Graph(object):
@@ -16,9 +19,10 @@ class Graph(object):
    
     def build_graph(self, M): 
         while (M > 0):
-            (x, y) = read_ints()
-            self.adj[x].append(y)  # node_edges[x].append(y)
-            self.adj[y].append(x)  # node_edges[y].append(x)
+            x, y = read_ints()
+            edge = Edge(x, y)
+            self.adj[edge.src].append(edge.dest)  # node_edges[x].append(y)
+            self.adj[edge.dest].append(edge.src)  # node_edges[y].append(x)
             M -= 1
         print ("Built graph: ", self.adj)
 
