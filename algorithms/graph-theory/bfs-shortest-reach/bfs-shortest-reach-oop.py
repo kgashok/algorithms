@@ -20,7 +20,7 @@ class Graph(object):
     def build_graph(self, M): 
         while (M > 0):
             x, y = read_ints()
-            edge = Edge(x, y)
+            edge = Edge(x,y)
             self.adj[edge.src].append(edge.dest)  # node_edges[x].append(y)
             self.adj[edge.dest].append(edge.src)  # node_edges[y].append(x)
             M -= 1
@@ -53,7 +53,7 @@ class myQueue(Queue):
 def print_distances(S, N, distances):
     for i in range(1, N + 1):
         if (i == S):
-            continue
+            continue  # to mute the printing of distance (aka 0) to itself
         if i in distances:
             print(distances[i], end=" "),
         else:
@@ -63,9 +63,9 @@ def print_distances(S, N, distances):
 
 def test_case():
     (N, M) = read_ints()
-    graph = Graph(N)
-    graph.build_graph(M)
-    S = int(sys.stdin.readline())
+    graph = Graph(N)               # with placeholders for N vertices
+    graph.build_graph(M)           # process M edges as (src, dest) 
+    S = int(sys.stdin.readline())  # Get the Starting node for which distances will be calculated
     distances = graph.compute_distances(S)
     print_distances(S, N, distances)
 
