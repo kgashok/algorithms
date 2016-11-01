@@ -7,24 +7,28 @@ from collections import namedtuple
 # Struct for edges.
 Edge = namedtuple('Edge', ['src', 'dest'])
 
+class myQueue(Queue): 
+    def __str__(self): 
+        return self.queue.__str__()
+
 # https://docs.python.org/2/library/userdict.html
 class Graph(object):
     
     def __init__(self, number=4):
-        self.adj = {}
+        self.Adj = {}
         print ("Inside graph creation...")
         for i in range (1,number+1):
-            self.adj[i] = []
-        print("Graph: ", self.adj)
+            self.Adj[i] = []
+        print("Graph initialized: ", self.Adj)
    
     def build_graph(self, M): 
         while (M > 0):
             x, y = read_ints()
             edge = Edge(x,y)
-            self.adj[edge.src].append(edge.dest)  # node_edges[x].append(y)
-            self.adj[edge.dest].append(edge.src)  # node_edges[y].append(x)
+            self.Adj[edge.src ].append(edge.dest)  
+            self.Adj[edge.dest].append(edge.src)
             M -= 1
-        print ("Built graph: ", self.adj)
+        print ("Graph built: ", self.Adj)
 
     def compute_distances(self, S):
         distances = {S: 0}  # distance to itself is obviously zero! 
@@ -34,7 +38,7 @@ class Graph(object):
             print ("Queue: ", queue)
             element = queue.get() 
             distance = distances[element] + 6    # varies based on levels, 1st level = 0 + 6 
-            for neighbor in self.adj[element]:   # iterate through the neighbours
+            for neighbor in self.Adj[element]:   # iterate through the neighbours
                 if (neighbor in distances):
                     continue                     # ignore nodes in a cycles?
                 distances[neighbor] = distance   # update distance to starting node  
@@ -45,10 +49,6 @@ class Graph(object):
 
 def read_ints():
     return [int(x) for x in sys.stdin.readline().split(" ")]
-
-class myQueue(Queue): 
-    def __str__(self): 
-        return self.queue.__str__()
 
 def print_distances(S, N, distances):
     for i in range(1, N + 1):
