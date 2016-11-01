@@ -41,6 +41,7 @@ def compute_distances(S, node_edges):
             if (neighbor in distances):
                 continue
             distances[neighbor] = distance
+            print ("Distances: ", distances)   
             queue.put(neighbor)
     print ("Distances: ", distances)
     return distances
