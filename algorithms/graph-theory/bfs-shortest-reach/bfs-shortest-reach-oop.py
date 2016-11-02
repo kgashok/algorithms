@@ -27,6 +27,9 @@ class Graph(object):
         self.Adj[edge.src ].append(edge.dest)  
         self.Adj[edge.dest].append(edge.src)
         
+    def isConnected(self): 
+        return self.N == len(self.Adj)
+    
     def addEdges(self, M): 
         while (M > 0):
             x, y = read_ints()
@@ -72,7 +75,7 @@ def test_case():
     S = int(sys.stdin.readline())  # Get the Starting node for which distances will be calculated
     distances = graph.compute_distances(S)
     print_distances(S, N, distances)
-
+    print( "Is it a connected graph? ", graph.isConnected() )
 
 def main():
     T = int(sys.stdin.readline())
