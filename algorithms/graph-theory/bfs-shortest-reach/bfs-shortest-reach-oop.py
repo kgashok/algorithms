@@ -23,14 +23,16 @@ class Graph(object):
         self.Adj = defaultdict(list) # default the value of any key to a list       
         print("Graph initialized: ", self.Adj)
    
-    def build_graph(self, M): 
+    def addEdge (self, edge): 
+        self.Adj[edge.src ].append(edge.dest)  
+        self.Adj[edge.dest].append(edge.src)
+        
+    def addEdges(self, M): 
         while (M > 0):
             x, y = read_ints()
-            edge = Edge(x,y)
-            self.Adj[edge.src ].append(edge.dest)  
-            self.Adj[edge.dest].append(edge.src)
+            self.addEdge (Edge(x, y)) 
             M -= 1
-        print ("Graph built: ", self.Adj)
+        print ("Graph built: ", self.Adj )
 
     def compute_distances(self, S):
         distances = {S: 0}  # distance to itself is obviously zero! 
@@ -66,7 +68,7 @@ def print_distances(S, N, distances):
 def test_case():
     (N, M) = read_ints()
     graph = Graph(N)               # with placeholders for N vertices
-    graph.build_graph(M)           # process M edges as (src, dest) 
+    graph.addEdges(M)              # process M edges as (src, dest) 
     S = int(sys.stdin.readline())  # Get the Starting node for which distances will be calculated
     distances = graph.compute_distances(S)
     print_distances(S, N, distances)
