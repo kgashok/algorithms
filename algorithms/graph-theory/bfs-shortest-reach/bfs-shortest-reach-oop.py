@@ -2,7 +2,7 @@
 
 import sys
 from queue import Queue
-from collections import namedtuple 
+from collections import namedtuple, defaultdict
 
 # Struct for edges.
 Edge = namedtuple('Edge', ['src', 'dest'])
@@ -15,10 +15,11 @@ class myQueue(Queue):
 class Graph(object):
     
     def __init__(self, number=4):
-        self.Adj = {}
-        print ("Inside graph creation...")
-        for i in range (1,number+1):
-            self.Adj[i] = []
+        '''
+        The class implementation uses Adjacency list, one of the 
+        two commonly adopted methods (http://j.mp/graphADT)
+        '''
+        self.Adj = defaultdict(list) # default the value of any key to a list       
         print("Graph initialized: ", self.Adj)
    
     def build_graph(self, M): 
