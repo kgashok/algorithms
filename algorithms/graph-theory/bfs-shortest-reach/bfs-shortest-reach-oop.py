@@ -14,7 +14,7 @@ class myQueue(Queue):
 # https://docs.python.org/2/library/userdict.html
 class Graph(object):
     
-    def __init__(self, N=4):
+    def __init__(self, N):
         '''
         The class implementation uses Adjacency list, one of the 
         two commonly adopted methods (http://j.mp/graphADT)
@@ -24,7 +24,7 @@ class Graph(object):
         print("Graph initialized: ", self.Adj)
    
     def isConnected(self):
-        return self.N == len(self.Adj)
+        return len(self.Adj) == 1 or self.N == len(self.Adj)
     
     def addEdge (self, edge): 
         self.Adj[edge.src ].append(edge.dest)  
@@ -79,9 +79,12 @@ def test_case():
 
 def main():
     T = int(sys.stdin.readline())
+    count = 1
     while (T > 0):
+        print("Running test ", count)
         test_case()
         T -= 1
+        count += 1
 
 if __name__ == '__main__':
     main()
