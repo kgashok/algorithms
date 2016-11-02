@@ -14,11 +14,12 @@ class myQueue(Queue):
 # https://docs.python.org/2/library/userdict.html
 class Graph(object):
     
-    def __init__(self, number=4):
+    def __init__(self, N=4):
         '''
         The class implementation uses Adjacency list, one of the 
         two commonly adopted methods (http://j.mp/graphADT)
         '''
+        self.N   = N                 # might be useful later
         self.Adj = defaultdict(list) # default the value of any key to a list       
         print("Graph initialized: ", self.Adj)
    
