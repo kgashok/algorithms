@@ -23,12 +23,12 @@ class Graph(object):
         self.Adj = defaultdict(list) # default the value of any key to a list       
         print("Graph initialized: ", self.Adj)
    
+    def isConnected(self):
+        return self.N == len(self.Adj)
+    
     def addEdge (self, edge): 
         self.Adj[edge.src ].append(edge.dest)  
         self.Adj[edge.dest].append(edge.src)
-        
-    def isConnected(self): 
-        return self.N == len(self.Adj)
     
     def addEdges(self, M): 
         while (M > 0):
