@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 import sys
+import pprint
 from queue import Queue
 from collections import namedtuple, defaultdict
-
+    
 # Struct for edges.
 Edge = namedtuple('Edge', ['src', 'dest'])
 
@@ -11,7 +12,6 @@ class myQueue(Queue):
     def __str__(self): 
         return self.queue.__str__()
 
-# https://docs.python.org/2/library/userdict.html
 class Graph(object):
     
     def __init__(self, N):
@@ -35,7 +35,8 @@ class Graph(object):
             x, y = read_ints()
             self.addEdge (Edge(x, y)) 
             M -= 1
-        print ("Graph built: ", self.Adj )
+        print ("Graph built: ")
+        pprint.pprint (self.Adj, indent=2, width=20)
 
     def compute_distances(self, S):
         distances = {S: 0}  # distance to itself is obviously zero! 
@@ -51,7 +52,8 @@ class Graph(object):
                 distances[neighbor] = distance   # update distance to starting node  
                 print ("Distances: ", distances)   
                 queue.put(neighbor)              # so its neighbours get traversed in the while loop 
-        print ("Distances: ", distances)
+        print ("Distances for ", S)
+        pprint.pprint (distances, indent=2, width=10)
         return distances
 
 def read_ints():
